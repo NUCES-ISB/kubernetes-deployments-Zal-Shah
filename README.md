@@ -34,7 +34,7 @@ Verify Flask App is running:
 kubectl get pods -l app=flask-app
 4️⃣ Enable Metrics Server & Deploy HPA
 minikube addons enable metrics-server
-kubectl apply -f manifests/deployment/flask-hpa.yaml
+kubectl apply -f manifests/deployment/flask-deployment.yaml (again)
 Verify HPA:
 
 kubectl get hpa
@@ -44,21 +44,17 @@ kubectl get hpa
 minikube service flask-service --url
 Example output:
 
-http://192.168.49.2:31417
+http://127.0.0.1:51628/
 2️⃣ Add a Message
 Visit:
 
-http://192.168.49.2:31417/add?msg=Hello+World
-Or use curl:
+http://127.0.0.1:51628/add?msg=Hello+World
 
-curl "http://192.168.49.2:31417/add?msg=Hello+World"
 3️⃣ View Stored Messages
 Visit:
 
-http://192.168.49.2:31417/messages
-Or use:
+http://127.0.0.1:51628/messages
 
-curl "http://192.168.49.2:31417/messages"
 Expected output:
 
 {
@@ -70,9 +66,7 @@ Expected output:
 Restart a Flask pod:
 
 kubectl delete pod -l app=flask-app
-Recheck messages:
-
-curl "http://192.168.49.2:31417/messages"
+Recheck the messages API
 ✅ Messages should still be there!
 
 2️⃣ Test Auto-Scaling
@@ -92,10 +86,7 @@ To stop the test, press CTRL + C and exit:
 
 exit
 
-📜 Final Git Push
+After adding all screenshots, commit into github.
 
-git add .
-git commit -m "Final Commit"
-git push -u origin main
-🎉 Congratulations! Your Kubernetes Deployment is Ready!
+🎉 Congratulations! Your Kubernetes Deployment is Done!
 

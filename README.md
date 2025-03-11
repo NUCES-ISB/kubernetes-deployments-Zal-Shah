@@ -3,10 +3,6 @@
 ## 📌 Overview
 This project deploys a **Flask-based messaging application** with a **PostgreSQL database** on a **Minikube-managed Kubernetes cluster**. The application allows users to store and retrieve messages via API calls while ensuring **persistent storage** and **scalability** using **Horizontal Pod Autoscaler (HPA).**
 
-## 📂 Folder Structure
-k8s-flask-app/ │── manifests/ │ │── deployment/ │ │ │── flask-deployment.yaml # Flask App Deployment │ │ │── postgres-deployment.yaml # PostgreSQL Deployment │ │ │── flask-hpa.yaml # Horizontal Pod Autoscaler for Flask │ │── service/ │ │ │── flask-service.yaml # Service for Flask App │ │ │── postgres-service.yaml # Service for PostgreSQL │ │── configmap/ │ │ │── postgres-configmap.yaml # ConfigMap for Database Configurations │ │── secret/ │ │ │── postgres-secret.yaml # Secret for Database Credentials │── app/ │ │── Dockerfile # Flask App Dockerfile │ │── requirements.txt # Flask Dependencies │ │── app.py # Flask Application Code │── README.md # Project Documentation │── submission/ # Contains test results & snapshots
-
-
 ---
 
 ## 🔧 **Prerequisites**
@@ -21,7 +17,7 @@ Before deploying the app, ensure you have the following installed:
 ## 🚀 **Deployment Steps**
 ### **1️⃣ Start Minikube**
 ```bash
-minikube start --memory=4096 --cpus=2 --driver=docker
+minikube start --driver=docker
 2️⃣ Deploy PostgreSQL
 kubectl apply -f manifests/configmap/postgres-configmap.yaml
 kubectl apply -f manifests/secret/postgres-secret.yaml
